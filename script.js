@@ -28,20 +28,20 @@ function singleRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         state = -1;    
         
-        console.log("the result is draw 'in this round' becouse You chose becuse it's same ")
+        console.log("the result is draw\n 'in this round'\n becouse You chose becuse it's same ")
         return calculateTheWiner(state); //+ {state} ;
     }
      //Rock
     else if (playerSelection == "rock" && computerSelection == "paper") {
         state = 0;
         
-        console.log("You lose 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
+        console.log("You lose 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
         return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "rock" && computerSelection == "scissor") {
         state = 1;
         
-        console.log("You win 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
+        console.log("You win 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
         return calculateTheWiner(state);// + { state };
     }
     //Paper
@@ -49,25 +49,24 @@ function singleRound(playerSelection, computerSelection){
     else if (playerSelection == "paper" && computerSelection == "scissor") {
         state = 0;
 
-        console.log("You lose 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
+        console.log("You lose 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
         return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "paper" && computerSelection == "rock") {
         state = 1;
         
-        console.log("You win 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
+        console.log("You win 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
         return calculateTheWiner(state); // + { state };
     }
     //Scissor
     else if (playerSelection == "scissor" && computerSelection == "rock") {
         state = 0
-        console.log("You lose 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
+        console.log("You lose 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
         return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "scissor" && computerSelection == "paper") {
         state = 1;
- 
-        console.log("You win 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
+        console.log("You win 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
         return calculateTheWiner(state); //+ { state };
     }
     else{
@@ -94,17 +93,17 @@ function game(){
 function calculateTheWiner(state){
     if (state == 1){
         yourScore++;
-        return yourScore, combuterScore;
+        return console.log("Your score : "+yourScore ,"Computer score : " + combuterScore)    
     }
     else if(state == 0){
-        combuterScore++;
-        return yourScore,combuterScore;
+        combuterScore++;      
+        return console.log("Your score : " + yourScore, "Computer score : " + combuterScore)      // return yourScore + `-> your score`, combuterScore '+-> combuter Score';
     }
     else if (state == -1) {
-        return yourScore, combuterScore;
+        return console.log("Your score : " + yourScore, "Computer score : " + combuterScore)        // -> combuter Score";
     }
     else{
-        console.log("There is a problem")
+        return console.log("There is a problem")   
     }
 }
 alert("Welcome to the game");
