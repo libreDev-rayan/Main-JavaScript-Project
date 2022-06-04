@@ -1,51 +1,74 @@
-function computerPlay(){
-    if (Math.floor(Math.random() * 3) === 0) {
-        return 'rock';
-    }
-    else if (Math.floor(Math.random() * 3) === 1) {
-        return 'paper';
-    }
-    else if (Math.floor(Math.random() * 3) === 2) {
-        return 'scissor';
-    }
+var yourScore = 0;
+var combuterScore = 0;
 
-    // randomly return either 
-    // ‘Rock’, ‘Paper’ or ‘Scissors’.
+function random(){
+    return Math.floor(Math.random() * 3);
 }
-function singleRound(playerSelection, computerSelection){
-    // return a string that declares the winner
-    //  of the round like so: "You Lose! Paper beats Rock"
-    
-    computerSelection = computerPlay();
-    //Rock
-    if (playerSelection == "rock" && computerSelection == "rock"){
-        return "the result is draw becouse You chose 'Rock'\n & computerSelection chosen'Rock' "
+function computerPlay(){
+    let number=random();
+    if (number == 0) {
+        return "rock";
     }
+    else if (number == 1) {
+        return "paper";
+    }
+    else if (number == 2) {
+        return "scissor";
+    }
+}
+
+function singleRound(playerSelection, computerSelection){
+    computerSelection = computerPlay()
+    
+    console.log("Computer select " + computerSelection + " this time!" )
+    alert("Combuter choose "+ computerSelection );
+    let state; // state =1 you won state =0 you lose -1 for draw /////////
+
+    //equals 
+    if (playerSelection === computerSelection){
+        state = -1;    
+        
+        console.log("the result is draw 'in this round' becouse You chose becuse it's same ")
+        return calculateTheWiner(state); //+ {state} ;
+    }
+     //Rock
     else if (playerSelection == "rock" && computerSelection == "paper") {
-        return "You lose becouse You chose 'Rock'\n & computerSelection chosen 'Paper' "
+        state = 0;
+        
+        console.log("You lose 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
+        return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "rock" && computerSelection == "scissor") {
-        return "You win becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' "
+        state = 1;
+        
+        console.log("You win 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
+        return calculateTheWiner(state);// + { state };
     }
     //Paper
-    else if (playerSelection == "paper" && computerSelection == "paper") {
-        return "the result is draw becouse You chose 'Rock'\n & computerSelection chosen'Rock' "
-    }
+    
     else if (playerSelection == "paper" && computerSelection == "scissor") {
-        return "You lose becouse You chose 'Rock'\n & computerSelection chosen 'Paper' "
+        state = 0;
+
+        console.log("You lose 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
+        return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "paper" && computerSelection == "rock") {
-        return "You win becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' "
+        state = 1;
+        
+        console.log("You win 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
+        return calculateTheWiner(state); // + { state };
     }
     //Scissor
-    else if (playerSelection == "scissor" && computerSelection == "scissor") {
-        return "the result is draw becouse You chose 'Rock'\n & computerSelection chosen'Rock' "
-    }
     else if (playerSelection == "scissor" && computerSelection == "rock") {
-        return "You lose becouse You chose 'Rock'\n & computerSelection chosen 'Paper' "
+        state = 0
+        console.log("You lose 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
+        return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "scissor" && computerSelection == "paper") {
-        return "You win becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' "
+        state = 1;
+ 
+        console.log("You win 'in this round' becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
+        return calculateTheWiner(state); //+ { state };
     }
     else{
         return "May The input is wrong !"
@@ -53,17 +76,40 @@ function singleRound(playerSelection, computerSelection){
 }
 function game(){
     for(let i=0 ; i<5;i++){
-        playerSelection = prompt("Chose either 'Scissor' or 'Paper' or 'Rock'")         //computerPlay();//"Rock";
-        alert("chosen");
-        playerSelectiontext.toLowerCase();
-        console.log((i+1) + " " + singleRound(playerSelection, computerSelection));
+        alert("Round " + (i + 1) );
+        console.log("Round " + (i + 1));
+        playerSelection = prompt("Chose either 'Scissor' or 'Paper' or 'Rock'");               
+        playerSelection = playerSelection.toLowerCase();
+        alert("You choose " + playerSelection);
+        console.log("You choose " + playerSelection);
+        
+        console.log((i + 1) + " " + calculateTheWiner(singleRound(playerSelection, computerSelection)));
+    }
+    if (yourScore > combuterScore)
+        console.log("you won becose your score : " + yourScore + " bigger than combuterScore : " + combuterScore)
+    if (yourScore < combuterScore)
+        console.log("you loose becose your score : " + yourScore + " less than combuterScore : " + combuterScore)
+}
+
+function calculateTheWiner(state){
+    if (state == 1){
+        yourScore++;
+        return yourScore, combuterScore;
+    }
+    else if(state == 0){
+        combuterScore++;
+        return yourScore,combuterScore;
+    }
+    else if (state == -1) {
+        return yourScore, combuterScore;
+    }
+    else{
+        console.log("There is a problem")
     }
 }
-alert("welcome to the game");
-let playerSelection ;// playerSelection = window.prompt(); // open the blank prompt window
-// playerSelection = prompt();
+alert("Welcome to the game");
+console.log("Welcome to the game \n")
 
-const computerSelection = computerPlay();
-// console.log(" chose by write below Rock or Paper or Scissors");
+let playerSelection ;
+let computerSelection; // = computerPlay();
 console.log(game());
-// console.log(computerPlay());
