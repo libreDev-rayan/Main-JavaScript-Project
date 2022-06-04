@@ -16,39 +16,29 @@ function computerPlay(){
         return "scissor";
     }
 }
-
 function singleRound(playerSelection, computerSelection){
     computerSelection = computerPlay()
     
     console.log("Computer select " + computerSelection + " this time!" )
     alert("Combuter choose "+ computerSelection );
     let state; // state =1 you won state =0 you lose -1 for draw /////////
-
-    //equals 
     if (playerSelection === computerSelection){
-        state = -1;    
-        
+        state = -1;          
         console.log("the result is draw\n 'in this round'\n becouse You chose becuse it's same ")
         return calculateTheWiner(state); //+ {state} ;
     }
-     //Rock
     else if (playerSelection == "rock" && computerSelection == "paper") {
-        state = 0;
-        
+        state = 0;       
         console.log("You lose 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
         return calculateTheWiner(state); // + { state };
     }
     else if (playerSelection == "rock" && computerSelection == "scissor") {
-        state = 1;
-        
+        state = 1;       
         console.log("You win 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Scissor' ");
         return calculateTheWiner(state);// + { state };
     }
-    //Paper
-    
     else if (playerSelection == "paper" && computerSelection == "scissor") {
         state = 0;
-
         console.log("You lose 'in this round'\n becouse You chose 'Rock'\n & computerSelection chosen 'Paper' ");
         return calculateTheWiner(state); // + { state };
     }
@@ -80,8 +70,7 @@ function game(){
         playerSelection = prompt("Chose either 'Scissor' or 'Paper' or 'Rock'");               
         playerSelection = playerSelection.toLowerCase();
         alert("You choose " + playerSelection);
-        console.log("You choose " + playerSelection);
-        
+        console.log("You choose " + playerSelection);        
         console.log((i + 1) + " " + calculateTheWiner(singleRound(playerSelection, computerSelection)));
     }
     if (yourScore > combuterScore)
@@ -89,7 +78,6 @@ function game(){
     if (yourScore < combuterScore)
         console.log("you loose becose your score : " + yourScore + " less than combuterScore : " + combuterScore)
 }
-
 function calculateTheWiner(state){
     if (state == 1){
         yourScore++;
